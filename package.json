@@ -1,0 +1,29 @@
+{
+  "name": "sequelize-nodejs-express",
+  "version": "1.0.0",
+  "description": "Ejemplo de utilización de la librería Sequelize con Node JS y Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aa-avila/sequelize-nodejs-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aa-avila/sequelize-nodejs-express/issues"
+  },
+  "homepage": "https://github.com/aa-avila/sequelize-nodejs-express#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12"
+  }
+}
