@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/aa-avila/sequelize-nodejs-express#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mariadb": "^2.5.4",
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
