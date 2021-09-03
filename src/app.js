@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const userRoutes = require('./routes/userRoutes');
 
 
 /*********************/
@@ -18,9 +19,11 @@ app.use(express.json());
 
 /*********************/
 // ROUTES
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hola!');
 });
+
+app.use('/', userRoutes);
 
 /*********************/
 module.exports = app;
