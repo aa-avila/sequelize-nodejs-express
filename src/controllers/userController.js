@@ -7,9 +7,46 @@ const User = require('../models/userModel');
 // Get all users
 const getUsers = async (req, res) => {
     try {
-        const users = await User.findAll();
-        res.send(users);
-        //console.log(users);
+        const firstname = req.query.firstname;
+        const lastname = req.query.lastname;
+
+        let users = [];
+
+        // 1)
+        // Si no se especifica filtro por nombre o apellido, trae todos:
+        if (firstname === undefined && lastname === undefined) {
+            users = await User.findAll();
+
+            res.send(users);
+            return;
+        }
+
+        // 2)
+        // Si existe nombre en la query, filtra por nombre
+        if (firstname) {
+            users = await User.findAll({
+                where: {
+                    firstname: firstname
+                }
+            });
+
+            res.send(users);
+            return;
+        }
+
+        // 3)
+        // Filtra por apellido
+        if (lastname) {
+            users = await User.findAll({
+                where: {
+                    lastname: lastname
+                }
+            });
+
+            res.send(users);
+            return;
+        }
+
     } catch (error) {
         res.status(500).send(error.message);
         console.log(error.message);
@@ -17,6 +54,19 @@ const getUsers = async (req, res) => {
 }
 
 // (busqueda por nombre) Get todos los que contengan el valor "x" en el campo "name"
+const getUsersByName = async (req, res) => {
+    try {
+        const name = req.params.name;
+
+
+
+        res.send(users);
+        //console.log(users);
+    } catch (error) {
+        res.status(500).send(error.message);
+        console.log(error.message);
+    }
+}
 
 // (filtrar por edad) Get todos los que contengan el valor "x" en el campo "age"
 
@@ -28,7 +78,10 @@ const getUsers = async (req, res) => {
 // Create user
 const createUser = async (req, res) => {
     try {
-        const response = await User.create({ firstname: "Jane", lastname: "Doe", age: 45, email: 'asd@qwerty.com' });
+        const { firstname, lastname, email, age } = req.body;
+
+        const response = await User.create({ firstname: firstname, lastname: lastname, age: age, email: email });
+
         res.send(response);
         //console.log(response);
     } catch (error) {
