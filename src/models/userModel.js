@@ -20,6 +20,10 @@ User.init({
         type: DataTypes.STRING
         // allowNull defaults to true
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     age: DataTypes.INTEGER
 }, {
     sequelize,
